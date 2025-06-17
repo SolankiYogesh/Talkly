@@ -1,0 +1,10 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "typeRoots": ["./src/types"],
+    "rootDir": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

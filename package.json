@@ -1,0 +1,74 @@
+{
+  "name": "talkly",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "echo '🧹 Cleaning Mobile Workspace...'; rm -rf yarn.lock node_modules packages/mobile/node_modules packages/mobile/ios/build packages/mobile/ios/Pods packages/mobile/ios/Podfile.lock packages/mobile/android/.gradle packages/mobile/android/build packages/mobile/android/app/build packages/mobile/android/app/.cxx packages/shared/node_modules packages/web/node_modules && echo '✅ Mobile workspace cleaned!'; echo '🧹 Cleaning Shared Workspace...'; rm -rf packages/shared/node_modules && echo '✅ Shared workspace cleaned!'; echo '🧹 Cleaning Web Workspace...'; rm -rf packages/web/node_modules && echo '✅ Web workspace cleaned!'",
+    "prettier": "prettier --write 'packages/*/src/**/*.{js,jsx,ts,tsx}'",
+    "linter": "eslint --fix 'packages/*/src/**/*.{js,jsx,ts,tsx}'",
+    "reset": "cd packages/mobile && watchman watch-del-all && APP_ENV=dev npx  react-native start --reset-cache",
+    "pod": "yarn workspace @talkly/mobile pod-install",
+    "postinstall": "cd packages/mobile && patch-package",
+    "android-studio": " open -a 'Android Studio' packages/mobile/android",
+    "xcode": "open -a Xcode packages/mobile/ios",
+    "start": "node ./commands/run.js",
+    "build": "yarn workspace @talkly/web build",
+    "prepare": "husky",
+    "android": "yarn workspace @talkly/mobile android",
+    "ios": "yarn workspace @talkly/mobile ios"
+  },
+  "lint-staged": {
+    "packages/*/src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@eslint/compat": "^1.2.8",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.24.0",
+    "@react-native-community/eslint-config": "3.2.0",
+    "@react-native/eslint-config": "^0.78.2",
+    "@types/eslint-plugin-jsx-a11y": "^6.10.0",
+    "@types/eslint__js": "^9.14.0",
+    "@types/prompts": "^2.4.9",
+    "@typescript-eslint/eslint-plugin": "8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "@typescript-eslint/rule-tester": "^8.29.0",
+    "@typescript-eslint/utils": "^8.29.0",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "eslint": "^9.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-import-resolver-babel-module": "^5.3.2",
+    "eslint-import-resolver-typescript": "^4.3.1",
+    "eslint-plugin-deprecation": "3.0.0",
+    "eslint-plugin-es": "^4.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-native": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.0"
+  },
+  "packageManager": "yarn@4.7.0",
+  "dependencies": {
+    "patch-package": "^8.0.0",
+    "prompts": "^2.4.2"
+  }
+}

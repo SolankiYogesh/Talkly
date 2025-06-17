@@ -1,0 +1,24 @@
+{
+  "name": "@talkly/shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "source": "src/index.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "author": "Talkly",
+  "license": "ISC",
+  "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
+    "axios": "^1.8.4",
+    "fbemitter": "^3.0.0",
+    "react": "^19.1.0",
+    "react-hook-form": "^7.58.0",
+    "yup": "^1.6.1",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/fbemitter": "^2.0.35",
+    "@types/react": "^19.1.2"
+  }
+}
